@@ -19,7 +19,7 @@ One of the tasks for the Club America Administrator is to log & track activism m
 - Basic plotting/charting  
 
 ## Sample Outputs
-- Weekly summary: `reports/weekly_inventory_summary.xlsx`  
+- Weekly summary: `reports/weekly_inventory_summary.xlsx`
 - Charts in `reports/charts/` showing trends and chapter distribution  
 
 ## How It Could be Used in the Real World
@@ -28,3 +28,9 @@ One of the tasks for the Club America Administrator is to log & track activism m
 - Automate alerts if any chapter falls below threshold counts  
 
 
+
+Project
+for
+tracking
+activism
+materials.
