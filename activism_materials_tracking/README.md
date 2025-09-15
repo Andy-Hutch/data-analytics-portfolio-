@@ -1,31 +1,31 @@
-# Activism Materials Tracking
-
 ## Overview
-Tracks inventory and distribution of activism materials across chapters. Helps ensure transparency, accountability, and timely restocking. Key operations: logging materials, counting totals, generating weekly summary reports.
+This project tracks the inventory and distribution of activism materials across chapters. It demonstrates a full data workflow: generating sample data, simulating messy field input, cleaning and validating, aggregating, and visualizing results.
 
 ## Motivation
-One of the tasks for the Club America Administrator is to log & track activism materials numerically. This repo simulates that workflow with sample data, cleaning, aggregation, and reporting.
+Club America Administrators and field teams need to log and track activism materials for transparency, accountability, and timely restocking. This repo simulates that workflow with realistic sample data, cleaning, aggregation, validation, and reporting.
 
 ## Workflow
-1. Load raw data (`data/materials_log_raw.csv`)  
-2. Clean data (handle missing fields, normalize names, remove duplicates) using `clean_materials_log.py`  
-3. Validate entries (e.g. ensure all required fields are present) via `validate_entries.py`  
-4. Aggregate data (count per material type, totals per chapter, weekly summaries) using `aggregate_materials_report.py`  
-5. Export reports to `.xlsx` or `.csv` and generate charts for visualization  
+1. **Create sample data** in `data/materials_log_sample.csv`
+2. **Generate messy raw data** using `generate_raw_data.py` → `data/materials_log_raw.csv`
+3. **Clean and standardize** using `clean_materials_log.py` → `data/materials_log_clean.csv`
+4. **Validate entries** with `validate_entries.py`
+5. **Aggregate and visualize** using `aggregate_materials_report.py` → summary files and charts in `reports/`
 
 ## Tools Used
-- Python (pandas, matplotlib/seaborn)  
-- CSV, Excel  
-- Basic plotting/charting  
+- Python (pandas, matplotlib, seaborn)
+- CSV, Excel
 
 ## Sample Outputs
-- Weekly summary: `reports/weekly_inventory_summary.xlsx`
-- Charts in `reports/charts/` showing trends and chapter distribution  
+- Aggregated summaries: `reports/materials_by_chapter.xlsx`, `reports/materials_by_week.xlsx`, `reports/materials_by_type.xlsx`
+- Charts: `reports/charts/materials_by_chapter.png`, etc.
 
 ## How It Could be Used in the Real World
-- Turn weekly CSVs provided by field teams into standardized reports  
-- Supply dashboards to leadership for incentive tracking or material distribution  
-- Automate alerts if any chapter falls below threshold counts  
+- Turn weekly CSVs from field teams into standardized reports
+- Supply dashboards to leadership for incentive tracking or material distribution
+- Automate alerts if any chapter falls below threshold counts
+
+---
+This project is a template for tracking activism materials and demonstrating practical data cleaning, validation, and reporting skills.
 
 
 
