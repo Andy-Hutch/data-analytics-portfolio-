@@ -1,1 +1,31 @@
-
+contact_id,first_name,last_name,email,school,state,created_date,source
+1,Emily,Johnson,emily.johnson@example.com,Liberty High,AZ,2025-01-05,Event Signup
+2,Michael,Smith,michael.smith@example.com,Patriot High,TX,2025-01-06,Website Form
+3,Sophia,Williams,sophia.williams@example.com,Freedom High,CA,2025-01-08,Event Signup
+4,James,Brown,james.brown@example.com,Lincoln High,OH,2025-01-10,Referral
+5,Ava,Jones,ava.jones@example.com,Roosevelt High,AZ,2025-01-12,Website Form
+6,Daniel,Miller,daniel.miller@example.com,Washington High,TX,2025-01-13,Event Signup
+7,Isabella,Davis,isabella.davis@example.com,Jefferson High,CA,2025-01-14,Referral
+8,Ethan,Garcia,ethan.garcia@example.com,Constitution High,FL,2025-01-15,Event Signup
+9,Mia,Martinez,mia.martinez@example.com,Independence High,AZ,2025-01-16,Website Form
+10,Benjamin,Lopez,benjamin.lopez@example.com,Heritage High,TX,2025-01-18,Referral
+11,Olivia,Hernandez,olivia.hernandez@example.com,Liberty High,AZ,2025-01-19,Event Signup
+12,Liam,Walker,liam.walker@example.com,Patriot High,TX,2025-01-20,Website Form
+13,Charlotte,Allen,charlotte.allen@example.com,Freedom High,CA,2025-01-21,Event Signup
+14,Noah,Young,noah.young@example.com,Lincoln High,OH,2025-01-22,Referral
+15,Amelia,King,amelia.king@example.com,Roosevelt High,AZ,2025-01-23,Website Form
+16,Elijah,Wright,elijah.wright@example.com,Washington High,TX,2025-01-24,Event Signup
+17,Sophia,Scott,sophia.scott@example.com,Jefferson High,CA,2025-01-25,Referral
+18,Jackson,Green,jackson.green@example.com,Constitution High,FL,2025-01-26,Event Signup
+19,Harper,Adams,harper.adams@example.com,Independence High,AZ,2025-01-27,Website Form
+20,Aiden,Baker,aiden.baker@example.com,Heritage High,TX,2025-01-28,Referral
+21,Evelyn,Nelson,evelyn.nelson@example.com,Liberty High,AZ,2025-02-02,Event Signup
+22,Lucas,Carter,lucas.carter@example.com,Patriot High,TX,2025-02-03,Website Form
+23,Abigail,Mitchell,abigail.mitchell@example.com,Freedom High,CA,2025-02-04,Event Signup
+24,Henry,Perez,henry.perez@example.com,Lincoln High,OH,2025-02-05,Referral
+25,Emily,Roberts,emily.roberts@example.com,Roosevelt High,AZ,2025-02-06,Website Form
+26,James,Turner,james.turner@example.com,Washington High,TX,2025-02-07,Event Signup
+27,Scarlett,Phillips,scarlett.phillips@example.com,Jefferson High,CA,2025-02-08,Referral
+28,Benjamin,Campbell,benjamin.campbell@example.com,Constitution High,FL,2025-02-09,Event Signup
+29,Mia,Parker,mia.parker@example.com,Independence High,AZ,2025-02-10,Website Form
+30,Elijah,Evans,elijah.evans@example.com,Heritage High,TX,2025-02-11,Referral
