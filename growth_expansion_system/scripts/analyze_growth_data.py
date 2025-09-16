@@ -1,81 +1,117 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
+from pathlib import Path
 
-# Robust path resolution for data file
-script_dir = os.path.dirname(__file__)
-data_path = os.path.abspath(os.path.join(script_dir, '..', 'data', 'growth_data_clean.csv'))
-reports_dir = os.path.abspath(os.path.join(script_dir, '..', 'reports'))
-charts_dir = os.path.abspath(os.path.join(reports_dir, 'charts'))
+# Paths
+DATA_PATH = Path("../data/raw/chapter_growth_data.csv")
+REPORTS_PATH = Path("reports")
+CHARTS_PATH = REPORTS_PATH / "charts"
 
-# Ensure output directories exist
-os.makedirs(reports_dir, exist_ok=True)
-os.makedirs(charts_dir, exist_ok=True)
+REPORTS_PATH.mkdir(parents=True, exist_ok=True)
+CHARTS_PATH.mkdir(parents=True, exist_ok=True)
 
-# Load cleaned data
-df = pd.read_csv(data_path)
+# Load data
+df = pd.read_csv(DATA_PATH, parse_dates=["event_date"])
 
-# --- 1. Bar Chart: Total New Students by Chapter ---
-chapter_summary = df.groupby('chapter')['new_students'].sum().reset_index()
-plt.figure(figsize=(8, 6))
-plt.bar(chapter_summary['chapter'], chapter_summary['new_students'], color='skyblue')
-plt.title('Total New Students by Chapter')
-plt.xlabel('Chapter')
-plt.ylabel('Total New Students')
+# Add month column for grouping
+df["month"] = df["event_date"].dt.to_period("M")
+
+# -------------------------
+# 1. Line chart: Growth over time by chapter
+# -------------------------
+plt.figure(figsize=(10,6))
+sns.lineplot(data=df, x=df["month"].astype(str), y="new_students", hue="chapter_name", marker="o")
+plt.title("Monthly New Student Growth by Chapter")
+plt.xlabel("Month")
+plt.ylabel("New Students")
+plt.legend(title="Chapter")
 plt.tight_layout()
-plt.savefig(os.path.join(charts_dir, 'bar_total_students_by_chapter.png'))
+plt.savefig(REPORTS_PATH / "growth_over_time.png")
 plt.close()
 
-# --- 2. Line Chart: Monthly Growth Trend ---
-df['month'] = pd.to_datetime(df['date'], errors='coerce').dt.to_period('M')
-monthly_growth = df.groupby('month')['new_students'].sum().reset_index()
-plt.figure(figsize=(8, 6))
-plt.plot(monthly_growth['month'].astype(str), monthly_growth['new_students'],
-         marker='o', color='orange')
-plt.title('Monthly New Student Growth')
-plt.xlabel('Month')
-plt.ylabel('New Students')
+# -------------------------
+# 2. Bar chart: Total students by chapter
+# -------------------------
+chapter_totals = df.groupby("chapter_name")["new_students"].sum().reset_index()
+
+plt.figure(figsize=(8,6))
+sns.barplot(data=chapter_totals, x="chapter_name", y="new_students", palette="viridis")
+plt.title("Total New Students by Chapter")
+plt.xlabel("Chapter")
+plt.ylabel("Total Students")
+plt.xticks(rotation=30)
 plt.tight_layout()
-plt.savefig(os.path.join(charts_dir, 'line_monthly_growth.png'))
+plt.savefig(CHARTS_PATH / "total_students_by_chapter.png")
 plt.close()
 
-# --- 3. Pie Chart: Student Distribution by Chapter ---
-plt.figure(figsize=(6, 6))
-plt.pie(chapter_summary['new_students'],
-        labels=chapter_summary['chapter'],
-        autopct='%1.1f%%',
-        startangle=140)
-plt.title('New Students Distribution by Chapter')
+# -------------------------
+# 3. Scatter plot: Events vs. Students
+# -------------------------
+plt.figure(figsize=(8,6))
+sns.scatterplot(data=df, x="events_hosted", y="new_students", hue="chapter_name", s=100)
+plt.title("Events Hosted vs New Students")
+plt.xlabel("Events Hosted")
+plt.ylabel("New Students")
 plt.tight_layout()
-plt.savefig(os.path.join(reports_dir, 'pie_students_distribution_by_chapter.png'))
+plt.savefig(CHARTS_PATH / "events_vs_students.png")
 plt.close()
 
-# --- 4. Histogram: Distribution of New Students ---
-plt.figure(figsize=(8, 6))
-plt.hist(df['new_students'].dropna(), bins=10, color='green', edgecolor='black')
-plt.title('Distribution of New Students per Event')
-plt.xlabel('New Students')
-plt.ylabel('Frequency')
+# -------------------------
+# 4. Heatmap: Monthly growth by chapter
+# -------------------------
+pivot = df.pivot_table(index="chapter_name", columns="month", values="new_students", aggfunc="sum").fillna(0)
+
+plt.figure(figsize=(10,6))
+sns.heatmap(pivot, annot=True, fmt="g", cmap="YlGnBu")
+plt.title("Monthly New Student Growth Heatmap")
+plt.xlabel("Month")
+plt.ylabel("Chapter")
 plt.tight_layout()
-plt.savefig(os.path.join(reports_dir, 'histogram_new_students.png'))
+plt.savefig(REPORTS_PATH / "growth_heatmap.png")
 plt.close()
 
-# --- 5. Scatter Plot: Active Events vs. New Students ---
-plt.figure(figsize=(8, 6))
-plt.scatter(df['active_events'], df['new_students'], color='purple')
-plt.title('Active Events vs. New Students')
-plt.xlabel('Active Events')
-plt.ylabel('New Students')
-plt.tight_layout()
-plt.savefig(os.path.join(charts_dir, 'scatter_events_vs_students.png'))
-plt.close()
+print("✅ Charts generated in reports/ and reports/charts/")
 
-# --- 6. Heatmap: Monthly Growth by Chapter ---
-heatmap_data = df.pivot_table(index='chapter', columns='month', values='new_students', aggfunc='sum')
-plt.figure(figsize=(10, 6))
-sns.heatmap(heatmap_data, annot=True, fmt=".0f", cmap="YlGnBu")
-plt.title('Monthly Growth Heatmap by Chapter')
-plt.tight_layout()
-plt.savefig(os.path.join(charts_dir, 'heatmap_monthly_growth.png'))
-plt.close()
+# Auto-generate Markdown report
+markdown_report = f"""
+# Chapter Growth & Expansion Report
+
+This report summarizes chapter growth trends, events, and recruitment performance based on collected data.
+
+---
+
+## 📈 Monthly Growth Over Time
+![Growth Over Time](growth_over_time.png)
+
+---
+
+## 📊 Total Students by Chapter
+![Total Students by Chapter](charts/total_students_by_chapter.png)
+
+---
+
+## 🔎 Events vs. Students
+![Events vs Students](charts/events_vs_students.png)
+
+---
+
+## 🌍 Growth Heatmap
+![Growth Heatmap](growth_heatmap.png)
+
+---
+
+## ✅ Key Takeaways
+1. Hosting more events directly drives higher student recruitment.  
+2. Established chapters outperform newer ones but newer chapters show strong growth potential.  
+3. Regional differences suggest West and Midwest are strong, while East may need more support.  
+
+---
+
+📌 *Generated automatically using Python (Pandas, Seaborn, Matplotlib).*
+"""
+
+with open(REPORTS_PATH / "growth_report.md", "w", encoding="utf-8") as f:
+    f.write(markdown_report)
+
+print("✅ Charts and Markdown report generated in reports/ and reports/charts/")

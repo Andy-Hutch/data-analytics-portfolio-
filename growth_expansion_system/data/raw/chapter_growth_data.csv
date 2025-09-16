@@ -1,0 +1,17 @@
+chapter_id,chapter_name,event_date,new_students,events_hosted,region
+1,Liberty Eagles,2025-01-15,12,1,West
+2,Patriot Owls,2025-01-17,8,1,East
+3,Freedom Hawks,2025-01-20,15,2,Midwest
+1,Liberty Eagles,2025-02-05,20,3,West
+2,Patriot Owls,2025-02-10,5,1,East
+3,Freedom Hawks,2025-02-14,18,2,Midwest
+4,Constitution Bears,2025-02-18,10,1,South
+1,Liberty Eagles,2025-03-03,25,2,West
+2,Patriot Owls,2025-03-07,12,1,East
+3,Freedom Hawks,2025-03-10,20,3,Midwest
+4,Constitution Bears,2025-03-15,15,2,South
+1,Liberty Eagles,2025-04-01,30,4,West
+2,Patriot Owls,2025-04-06,10,2,East
+3,Freedom Hawks,2025-04-09,22,3,Midwest
+4,Constitution Bears,2025-04-12,18,2,South
+5,Victory Lions,2025-04-20,12,1,West

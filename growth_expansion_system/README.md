@@ -1,37 +1,94 @@
-# Growth & Expansion System
+📊 Growth & Expansion System
 
-This project analyzes chapter growth and expansion by tracking new student recruitment and active events over time. It includes realistic, messy data generation, cleaning, analysis, and visualization workflows.
+This project simulates a real-world data analytics workflow for tracking and analyzing chapter growth across student organizations. It includes raw and cleaned data, automated analysis scripts, visualizations, and a polished PDF report—mirroring what a data analyst might deliver to stakeholders.
 
-## Data
-- `data/growth_data_raw.csv`: Simulated raw data with inconsistencies and missing values.
-- `data/growth_data_clean.csv`: Cleaned and standardized data for analysis.
+# 📂 Project Structure
 
-## Scripts
-- `scripts/generate_raw_growth_data.py`: Generates realistic, messy sample data.
-- `scripts/clean_growth_data.py`: Cleans and standardizes the raw data.
-- `scripts/analyze_growth_data.py`: Analyzes cleaned data and generates multiple visualizations.
+```
+growth_expansion_system/
+│── data/
+│   ├── raw/                      # Placeholder for raw input files
+│   ├── processed/                # Cleaned and transformed datasets
+│
+│── reports/
+│   ├── chapter_growth_report.pdf # Final report (auto-generated)
+│   ├── student_growth_over_time.png
+│   ├── chapter_distribution.png
+│   └── charts/
+│       ├── events_vs_students.png
+│       ├── students_distribution.png
+│       └── monthly_growth_heatmap.png
+│
+│── scripts/
+│   ├── analyze_growth_data.py    # Generates charts from data
+│   └── generate_report.py        # Builds PDF report with charts + analysis
+│
+└── README.md                     # Project documentation
+```
 
-## Reports & Visualizations
-- `reports/`: Contains summary reports, pie and histogram charts.
-- `reports/charts/`: Contains bar, line, scatter, and heatmap visualizations of growth metrics.
+# ⚙️ Workflow
 
-## Structure
-- `data/` — Raw and processed data files
-- `scripts/` — Python scripts for data generation, cleaning, and analysis
-- `reports/` — Generated reports, summary charts, and PDFs
-- `reports/charts/` — Detailed visualizations (bar, line, scatter, heatmap)
-- `notebooks/` — Jupyter notebooks for interactive exploration
+## Data Collection
 
-## Setup & Usage
-1. Place your data files in the `data/` folder.
-2. Run scripts in the `scripts/` folder to generate, clean, and analyze data.
-3. Visualizations and reports will be saved in `reports/` and `reports/charts/`.
-4. Use `notebooks/` for interactive analysis and custom exploration.
+Example student recruitment & chapter activity data is stored in `data/`.
 
-## Example Workflow
-- Generate messy data: `python scripts/generate_raw_growth_data.py`
-- Clean data: `python scripts/clean_growth_data.py`
-- Analyze and visualize: `python scripts/analyze_growth_data.py`
+This simulates real-world student organization growth tracking.
 
----
-For questions or improvements, open an issue or contribute via pull request.
+## Analysis & Visualization
+
+Run `scripts/analyze_growth_data.py` to generate charts:
+
+```powershell
+python scripts/analyze_growth_data.py
+```
+
+## Report Generation
+
+Compile insights + charts into a stakeholder-ready PDF:
+
+```powershell
+python scripts/generate_report.py
+```
+
+# Output
+
+- PDF report (`reports/chapter_growth_report.pdf`)
+- PNG charts (`reports/` + `reports/charts/`)
+
+# 📈 Example Insights
+
+- Student recruitment trends over time
+- Chapter distribution by size
+- Correlation between events and new students
+- Monthly growth patterns (heatmap view)
+
+# 🎯 Real-World Application
+
+This project mirrors deliverables an analyst might provide to an organization like TPUSA or other student/nonprofit groups:
+
+- Track growth over time
+- Identify high-performing chapters
+- Recommend resource allocation & outreach strategies
+
+# 🛠️ Tools & Libraries
+
+- Python (`pandas`, `matplotlib`, `seaborn`) – data analysis + visualization
+- ReportLab – PDF report generation
+- GitHub – version control & portfolio showcase
+
+# 🔧 How to run
+
+Save the dataset to:
+growth_expansion_system/data/raw/chapter_growth_data.csv
+
+Save the script to:
+growth_expansion_system/scripts/analyze_growth_data.py
+
+In VS Code terminal:
+
+```powershell
+cd growth_expansion_system/scripts
+python analyze_growth_data.py
+```
+
+Check growth_expansion_system/reports/ and growth_expansion_system/reports/charts/ → you’ll have 4 polished PNGs.
