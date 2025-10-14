@@ -1,1 +1,1 @@
-
+A Python-powered dashboard that pulls mock compliance data, automatically cleands and transforms it, and visualizes risk status, trends, and required actions. Designed for executive stakeholders—showcases real-time monitoring, ETL automation, and business impact for future GRC roles.
